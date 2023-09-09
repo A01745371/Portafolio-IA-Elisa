@@ -39,7 +39,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # Importación de datos
 
-airlines = pd.read_csv("Airlines.csv") # CAMBIAR RUTA DEL ARCHIVO Airlines.csv
+airlines = pd.read_csv("/Users/mac/Documents/Actividades de GitHub Progra/mavericks_IA/Portafolio-IA-Elisa/Entrega 2 (Con Framework)/Airlines.csv") # CAMBIAR RUTA DEL ARCHIVO Airlines.csv
 
 # Primeras 5 filas del data set
 #airlines.head() # VISUALIZACIÓN
