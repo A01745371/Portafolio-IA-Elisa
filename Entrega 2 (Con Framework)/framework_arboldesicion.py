@@ -23,12 +23,15 @@ clasificación para este modelo.
 """
 
 # Importación de librerías
+import graphviz
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from sklearn import tree
 from collections import Counter
 import matplotlib.pyplot as plt
 from sklearn import preprocessing
+from IPython.display import display
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.datasets import make_classification
@@ -39,7 +42,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # Importación de datos
 
-airlines = pd.read_csv("/Users/mac/Documents/Actividades de GitHub Progra/mavericks_IA/Portafolio-IA-Elisa/Entrega 2 (Con Framework)/Airlines.csv") # CAMBIAR RUTA DEL ARCHIVO Airlines.csv
+airlines = pd.read_csv("/content/Airlines.csv") # CAMBIAR RUTA DEL ARCHIVO Airlines.csv
 
 # Primeras 5 filas del data set
 #airlines.head() # VISUALIZACIÓN
@@ -173,7 +176,7 @@ arbol = DecisionTreeClassifier()
 params = {'max_depth': [1, 2, 3, 4, 5], 'min_samples_split': [10, 15, 20, 25], 'min_samples_leaf': [10, 20, 30, 40]}
 
 # Use cross-validation to tune the hyperparameters
-search = GridSearchCV(arbol, params, cv=10, scoring='accuracy', verbose=20)
+search = GridSearchCV(arbol, params, cv=10, scoring='accuracy', verbose=3)
 search.fit(Xtrain, ytrain)
 
 # Print the best hyperparameters and score
@@ -189,6 +192,13 @@ arbol_best.fit(Xtrain, ytrain)
 # Se hacen las predicciones con el set de prueba
 prediction_test = arbol_best.predict(Xtest)
 target_names = ['class 0', 'class 1']
+
+fig = plt.figure(figsize=(15,10))
+_ = tree.plot_tree(arbol_best, 
+                   feature_names=X.columns,  
+                   class_names=target_names,
+                   filled=True)
+
 print(classification_report(ytest, prediction_test, target_names=target_names))
 
 cm = confusion_matrix(ytest, prediction_test)
