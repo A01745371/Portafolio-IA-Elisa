@@ -1,5 +1,5 @@
-# Portafolio-IA-Elisa
-Portafolio de Inteligencia Artificial - Elisa Sánchez Bahnsen A01745371
+# Portafolio IA (Implementación) - Elisa
+Portafolio de Inteligencia Artificial (Implementación) - Elisa Sánchez Bahnsen A01745371
 
 Entrega 1 - Implementación de una técnica de aprendizaje máquina sin el uso de un framework
 
